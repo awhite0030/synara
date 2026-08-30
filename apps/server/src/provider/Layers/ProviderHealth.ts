@@ -919,7 +919,7 @@ export const makeCheckCodexProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "Codex CLI (`codex`) is not installed or not on PATH."
+            ? `Codex CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute Codex CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       };
     }
@@ -1093,7 +1093,7 @@ export const makeCheckClaudeProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "Claude Agent CLI (`claude`) is not installed or not on PATH."
+            ? `Claude Agent CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute Claude Agent CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       };
     }
@@ -1280,7 +1280,7 @@ export const makeCheckGrokProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "Grok CLI (`grok`) is not installed or not on PATH."
+            ? `Grok CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute Grok CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       } satisfies ServerProviderStatus;
     }
@@ -1359,7 +1359,7 @@ export const makeCheckDroidProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "Droid CLI (`droid`) is not installed or not on PATH."
+            ? `Droid CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute Droid CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       } satisfies ServerProviderStatus;
     }
@@ -1435,7 +1435,7 @@ export const makeCheckOpenCodeProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "OpenCode CLI (`opencode`) is not installed or not on PATH."
+            ? `OpenCode CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute OpenCode CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       } satisfies ServerProviderStatus;
     }
@@ -1506,7 +1506,7 @@ export const makeCheckKiloProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "Kilo CLI (`kilo`) is not installed or not on PATH."
+            ? `Kilo CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute Kilo CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       } satisfies ServerProviderStatus;
     }
@@ -1744,7 +1744,7 @@ export const makeCheckCursorProviderStatus = (
         checkedAt,
         message:
           versionProbe.outcome === "missing"
-            ? "Cursor Agent CLI (`cursor-agent`) is not installed or not on PATH."
+            ? `Cursor Agent CLI (\`${executable}\`) is not installed or not on PATH.`
             : `Failed to execute Cursor Agent CLI health check: ${error instanceof Error ? error.message : String(error)}.`,
       } satisfies ServerProviderStatus;
     }

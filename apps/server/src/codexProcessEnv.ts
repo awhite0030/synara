@@ -11,6 +11,7 @@ import { readActiveCodexProviderEnvKey } from "@synara/shared/codexConfig";
 import {
   readEnvironmentFromLoginShell,
   resolveLoginShell,
+  mergePathEntries,
   type ShellEnvironmentReader,
 } from "@synara/shared/shell";
 
@@ -734,7 +735,7 @@ export async function buildCodexProcessEnv(
         ]);
 
         if (shellEnvironment.PATH) {
-          effectiveEnv.PATH = shellEnvironment.PATH;
+          effectiveEnv.PATH = mergePathEntries(shellEnvironment.PATH, effectiveEnv.PATH, platform) || effectiveEnv.PATH;
         }
         if (!effectiveEnv.SSH_AUTH_SOCK && shellEnvironment.SSH_AUTH_SOCK) {
           effectiveEnv.SSH_AUTH_SOCK = shellEnvironment.SSH_AUTH_SOCK;
