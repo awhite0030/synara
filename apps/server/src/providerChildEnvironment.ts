@@ -100,7 +100,7 @@ export function buildProviderChildEnvironment(input: {
     ) {
       continue;
     }
-    if (INHERITED_NATIVE_CAPABILITY_KEYS.has(key) && !allowedNativeCapabilities.has(key)) {
+    if (INHERITED_NATIVE_CAPABILITY_KEYS.has(key) && !allowedNativeCapabilities.has(key) && key !== "PATH") {
       continue;
     }
     if (
