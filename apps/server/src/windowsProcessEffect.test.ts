@@ -49,6 +49,7 @@ it.runIf(process.platform === "win32")(
         env,
         shell: prepared.shell,
         ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+        ...(prepared.windowsHide ? { windowsHide: true } : {}),
       };
 
       const exitCode = await Effect.runPromise(

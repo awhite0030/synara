@@ -664,6 +664,7 @@ const runProviderCommand = (
     const command = ChildProcess.make(prepared.command, prepared.args, {
       shell: prepared.shell,
       ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+      ...(prepared.windowsHide ? { windowsHide: true } : {}),
       env,
       // Health probes are non-interactive. Leaving stdin as a pipe can keep CLIs
       // such as Antigravity waiting even after a read-only subcommand has finished.
@@ -2597,6 +2598,7 @@ export function makeProviderHealthLive(options?: { readonly providerUpdateTimeou
           ChildProcess.make(prepared.command, prepared.args, {
             shell: prepared.shell,
             ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+            ...(prepared.windowsHide ? { windowsHide: true } : {}),
             env: updateEnv,
           }),
         );

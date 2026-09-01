@@ -1643,6 +1643,7 @@ export function makeCursorAdapter(
           ChildProcess.make(prepared.command, prepared.args, {
             shell: prepared.shell,
             ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+            ...(prepared.windowsHide ? { windowsHide: true } : {}),
             env,
           }),
         );

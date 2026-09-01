@@ -1357,6 +1357,7 @@ const makeAcpSessionRuntime = (
           env,
           shell: prepared.shell,
           ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+          ...(prepared.windowsHide ? { windowsHide: true } : {}),
         }),
       )
       .pipe(
