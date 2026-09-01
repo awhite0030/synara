@@ -875,6 +875,7 @@ const makeOpenCodeRuntime = (options?: OpenCodeRuntimeLiveOptions) =>
           ChildProcess.make(prepared.command, prepared.args, {
             shell: prepared.shell,
             ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+            ...(prepared.windowsHide ? { windowsHide: true } : {}),
             ...(input.cwd ? { cwd: input.cwd } : {}),
             env: childEnv,
           }),
@@ -949,6 +950,7 @@ const makeOpenCodeRuntime = (options?: OpenCodeRuntimeLiveOptions) =>
             ChildProcess.make(prepared.command, prepared.args, {
               shell: prepared.shell,
               ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+              ...(prepared.windowsHide ? { windowsHide: true } : {}),
               env: childEnv,
               ...(input.cwd ? { cwd: input.cwd } : {}),
               detached: false,

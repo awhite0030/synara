@@ -348,6 +348,7 @@ const makeCodexTextGeneration = Effect.gen(function* () {
           env,
           shell: prepared.shell,
           ...(prepared.windowsVerbatimArguments ? { windowsVerbatimArguments: true } : {}),
+          ...(prepared.windowsHide ? { windowsHide: true } : {}),
           stdin: {
             stream: Stream.make(new TextEncoder().encode(prompt)),
           },
