@@ -652,8 +652,12 @@ const LEGACY_KEYBINDING_COMMAND_ALIASES = {
 
 // Commands removed without a direct replacement are dropped during startup so
 // persisted configs from older releases do not produce validation warnings.
-const RETIRED_LEGACY_KEYBINDING_COMMANDS = new Set(["chat.newGemini"]);
-const RETIRED_LEGACY_KEYBINDING_COMMAND_PATTERN = /^(?:composer\.)?modelPicker\.jump\.[1-9]$/;
+const RETIRED_LEGACY_KEYBINDING_COMMANDS = new Set([
+  "chat.newGemini",
+  "rightPanel.toggle",
+  "terminal.splitVertical",
+]);
+const RETIRED_LEGACY_KEYBINDING_COMMAND_PATTERN = /^(?:(?:composer\.)?modelPicker\.jump\.[1-9]|preview\..*)$/;
 const OUTDATED_RECENT_VIEW_TERMINAL_GUARD = "!terminalFocus";
 const OUTDATED_SIDEBAR_SEARCH_SHORTCUT = "mod+k";
 const RECENT_VIEW_SHORTCUT_BY_COMMAND: Partial<Record<KeybindingRule["command"], string>> = {
