@@ -49,7 +49,11 @@ export function selectProfileTopProvider(
   stats: ProfileStats,
   tokenStats: ProfileTokenStats | null,
 ): ProfileTopProviderSelection {
-  if (tokenStats?.available && tokenStats.topProvider) {
+  if (
+    tokenStats?.available &&
+    tokenStats.topProvider &&
+    tokenStats.unavailableProviders.length === 0
+  ) {
     return {
       provider: tokenStats.topProvider,
       percent: tokenStats.topProviderPercent,
@@ -71,7 +75,11 @@ export function selectProfileModelUsage(
   stats: ProfileStats,
   tokenStats: ProfileTokenStats | null,
 ): ProfileModelUsageSelection {
-  if (tokenStats?.available && tokenStats.models.length > 0) {
+  if (
+    tokenStats?.available &&
+    tokenStats.models.length > 0 &&
+    tokenStats.unavailableProviders.length === 0
+  ) {
     return { entries: tokenStats.models, metric: "tokens" };
   }
   return { entries: stats.providerModels, metric: "turns" };
