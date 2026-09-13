@@ -121,4 +121,26 @@ describe("profile selectors", () => {
       metric: "turns",
     });
   });
+
+  it("falls back to core profile stats when token telemetry is available but some providers lack token telemetry", () => {
+    const partialTokenStats = {
+      ...tokenStats,
+      unavailableProviders: ["grok" as any],
+    };
+
+    expect(selectProfileTopProvider(baseStats, partialTokenStats)).toEqual({
+      provider: "codex",
+      percent: 66.7,
+      metric: "turns",
+    });
+    // heatmap is still tokens based
+    expect(selectProfileHeatmap(baseStats, partialTokenStats)).toEqual({
+      cells: [tokenHeatmapCell],
+      unit: "tokens",
+    });
+    expect(selectProfileModelUsage(baseStats, partialTokenStats)).toEqual({
+      entries: baseStats.providerModels,
+      metric: "turns",
+    });
+  });
 });
