@@ -1,10 +1,5 @@
 import { assert, describe, it } from "@effect/vitest";
-import {
-  DEFAULT_MODEL_BY_PROVIDER,
-  type ModelSelection,
-  type ProviderKind,
-  type ProviderModelDescriptor,
-} from "@synara/contracts";
+import type { ModelSelection, ProviderKind, ProviderModelDescriptor } from "@synara/contracts";
 import { Effect } from "effect";
 
 import type { ProviderDiscoveryServiceShape } from "../provider/Services/ProviderDiscoveryService.ts";
@@ -573,10 +568,7 @@ describe("agent gateway target resolver", () => {
       const unavailableDiscovery = {
         listModels: () => Effect.fail(new Error("temporary discovery failure")),
       } as unknown as ProviderDiscoveryServiceShape;
-      const defaultTarget = {
-        provider: "codex" as const,
-        model: DEFAULT_MODEL_BY_PROVIDER.codex,
-      };
+      const defaultTarget = { provider: "codex" as const, model: "gpt-5.5" };
       assert.deepEqual(
         yield* resolveAgentGatewayTarget({
           target: defaultTarget,
@@ -599,7 +591,7 @@ describe("agent gateway target resolver", () => {
       const invalidOption = yield* resolveAgentGatewayTarget({
         target: {
           provider: "codex",
-          model: DEFAULT_MODEL_BY_PROVIDER.codex,
+          model: "gpt-5.5",
           options: { reasoningEffort: "invented" },
         },
         discovery: unavailableDiscovery,

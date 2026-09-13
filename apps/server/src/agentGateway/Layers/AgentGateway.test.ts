@@ -820,7 +820,6 @@ function makeHarnessLayer(
       (({ provider }: { provider: string }) => {
         const modelsByProvider: Record<string, ReadonlyArray<Record<string, unknown>>> = {
           codex: [
-            { slug: DEFAULT_MODEL_BY_PROVIDER.codex, name: "GPT-6 Astra" },
             { slug: "gpt-5.5", name: "GPT-5.5" },
             {
               slug: "gpt-5.6-terra",
